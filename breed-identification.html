@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخيص نوع الدجاجة - نظام تشخيص صحة الدجاج</title>
+    <meta name="description" content="تحديد سلالة الدجاج من خلال صورة واحدة باستخدام الذكاء الاصطناعي">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-fixed-text">قد يقال</div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dna"></i>
+                    <span>تشخيص السلالات</span>
+                </div>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav id="mainNav" class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                        <li><a href="#upload" class="nav-link active">رفع الصورة</a></li>
+                        <li><a href="#results" class="nav-link">النتائج</a></li>
+                    </ul>
+                </nav>
+
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in">
+                    تشخيص نوع الدجاجة
+                    <span class="gradient-text">بالذكاء الاصطناعي</span>
+                </h1>
+                <p class="hero-description animate-fade-in-delay-1">
+                    قم برفع صورة الدجاجة لتحديد سلالتها بدقة عالية والحصول على معلومات كاملة عن الرعاية المناسبة
+                </p>
+
+                <!-- Hero Stats -->
+                <div class="hero-stats animate-fade-in-delay-2">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="6">0</div>
+                        <div class="stat-label">سلالة مدعومة</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="95">0</div>
+                        <div class="stat-label">نسبة الدقة %</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="1000">0</div>
+                        <div class="stat-label">تحليل يومي</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="hero-bg-animation">
+            <div class="floating-icon" style="left: 10%; top: 20%; animation-delay: 0s;">
+                <i class="fas fa-feather"></i>
+            </div>
+            <div class="floating-icon" style="left: 80%; top: 30%; animation-delay: 1s;">
+                <i class="fas fa-egg"></i>
+            </div>
+            <div class="floating-icon" style="left: 20%; top: 70%; animation-delay: 2s;">
+                <i class="fas fa-dna"></i>
+            </div>
+            <div class="floating-icon" style="left: 75%; top: 75%; animation-delay: 1.5s;">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="upload">
+        <div class="container">
+            <div class="content-wrapper">
+
+                <!-- Upload Section -->
+                <section class="upload-section" id="uploadSection">
+                    <div class="section-title">
+                        <h2>الخطوة 1: رفع الصورة</h2>
+                        <p>اختر صورة واضحة للدجاجة للحصول على أفضل النتائج</p>
+                    </div>
+
+                    <div class="upload-card" id="uploadCard">
+                        <div class="upload-area-custom" id="uploadArea">
+                            <div class="upload-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3 class="upload-title">ارفع صورة للدجاجة</h3>
+                            <p class="upload-subtitle">اسحب الصورة هنا أو انقر لاختيار الملف</p>
+
+                            <!-- Custom File Input -->
+                            <div class="file-input-wrapper">
+                                <input type="file" id="fileInput" accept="image/*" class="file-input">
+                                <label for="fileInput" class="file-input-label">
+                                    <i class="fas fa-image"></i>
+                                    اختر صورة
+                                </label>
+                            </div>
+
+                            <div class="file-info" id="fileInfo"></div>
+                        </div>
+
+                        <div class="preview-area" id="previewArea" style="display: none;">
+                            <img id="previewImage" alt="معاينة الصورة">
+                            <p class="preview-text">انقر لتغيير الصورة</p>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons" id="actionButtons" style="display: none;">
+                        <button class="btn btn-primary" id="analyzeBtn">
+                            <span id="analyzeText">ابدأ التحليل</span>
+                            <span id="loadingSpinner" class="spinner" style="display: none;">
+                                <i class="fas fa-spinner"></i>
+                                جاري التحليل...
+                            </span>
+                        </button>
+                        <button class="btn btn-outline" id="cancelBtn">إلغاء</button>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section" id="resultsSection" style="display: none;">
+                    <div class="section-title">
+                        <h2>الخطوة 2: النتائج</h2>
+                        <p>تم تحديد سلالة الدجاجة بنجاح</p>
+                    </div>
+
+                    <div class="results-card">
+                        <div class="results-card-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>نتائج تحديد السلالة</h3>
+                        </div>
+
+                        <div class="breed-result">
+                            <div class="breed-main">
+                                <p class="result-label">السلالة المكتشفة</p>
+                                <h3 class="breed-name" id="breedName"></h3>
+                                <div class="accuracy-container">
+                                    <div class="confidence-label">
+                                        <span>دقة التعرف</span>
+                                        <span id="accuracyText"></span>
+                                    </div>
+                                    <div class="confidence-bar">
+                                        <div class="confidence-fill" id="accuracyBar"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="breed-info-section">
+                            <h4 class="section-subtitle">
+                                <i class="fas fa-info-circle"></i>
+                                معلومات عن السلالة
+                            </h4>
+                            <ul class="info-list" id="breedInfo"></ul>
+                        </div>
+
+                        <div class="care-section">
+                            <h4 class="section-subtitle">
+                                <i class="fas fa-heart"></i>
+                                نصائح العناية
+                            </h4>
+                            <div class="care-content" id="careContent"></div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="newAnalysisBtn">
+                            <i class="fas fa-redo"></i>
+                            تحليل صورة جديدة
+                        </button>
+                    </div>
+
+             
+                </section>
+
+                <!-- Info Section -->
+                <section class="info-section" id="infoSection">
+                    <h3 class="info-title">
+                        <i class="fas fa-lightbulb"></i>
+                        نصائح للحصول على أفضل النتائج
+                    </h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>التقط صورة واضحة للدجاجة كاملة</span>
+                        </li>
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>استخدم إضاءة جيدة وخلفية بسيطة</span>
+                        </li>
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>تأكد من ظهور لون الريش والشكل بوضوح</span>
+                        </li>
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>التقط الصورة من زاوية جانبية أو أمامية</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 نظام تشخيص صحة الدجاج - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="breed-identification.js"></script>
+
+    <script>
+        // Initialize counters and header functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Header functionality
+            const header = document.getElementById('mainHeader');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            // Scroll effect for header
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            mobileMenuToggle?.addEventListener('click', function () {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    mobileMenuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+
+                    // Update active link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Animated Counter for Stats
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start);
+                    }
+                }, 16);
+            }
+
+            // Initialize counters
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                animateCounter(stat, target);
+            });
+        });
+    </script>
+</body>
+
+</html>

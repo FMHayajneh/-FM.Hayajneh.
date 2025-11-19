@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التشخيص الشامل - نظام تشخيص صحة الدجاج</title>
+    <meta name="description" content="نظام تشخيص شامل يجمع بين تحليل صورة الدجاجة والبراز لتقديم تشخيص دقيق">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../@comprehensive/comprehensive-diagnosis.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-fixed-text">قد يقال</div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-diagnoses"></i>
+                    <span>التشخيص الشامل</span>
+                </div>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav id="mainNav" class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                        <li><a href="#upload" class="nav-link active">رفع الصور</a></li>
+                        <li><a href="#results" class="nav-link">النتائج</a></li>
+                    </ul>
+                </nav>
+
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in">
+                    التشخيص الشامل المتكامل
+                    <span class="gradient-text">بالذكاء الاصطناعي</span>
+                </h1>
+                <p class="hero-description animate-fade-in-delay-1">
+                    نظام متكامل يجمع بين تحليل صورة الدجاجة والبراز لتقديم تشخيص دقيق وشامل مع خطة علاج متكاملة
+                </p>
+                
+                <!-- Hero Stats -->
+                <div class="hero-stats animate-fade-in-delay-2">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="2">0</div>
+                        <div class="stat-label">تحليل مزدوج</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="8">0</div>
+                        <div class="stat-label">مؤشر تشخيص</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="95">0</div>
+                        <div class="stat-label">دقة التحليل %</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="hero-bg-animation">
+            <div class="floating-icon" style="left: 10%; top: 20%; animation-delay: 0s;">
+                <i class="fas fa-camera"></i>
+            </div>
+            <div class="floating-icon" style="left: 80%; top: 30%; animation-delay: 1s;">
+                <i class="fas fa-vial"></i>
+            </div>
+            <div class="floating-icon" style="left: 20%; top: 70%; animation-delay: 2s;">
+                <i class="fas fa-stethoscope"></i>
+            </div>
+            <div class="floating-icon" style="left: 75%; top: 75%; animation-delay: 1.5s;">
+                <i class="fas fa-file-medical-alt"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="upload">
+        <div class="container">
+            <div class="content-wrapper">
+                
+                <!-- Upload Section -->
+                <section class="upload-section" id="uploadSection">
+                    <div class="section-title">
+                        <h2>الخطوة 1: رفع الصور المطلوبة</h2>
+                        <p>قم برفع صورتين للحصول على تشخيص شامل ودقيق</p>
+                    </div>
+                    
+                    <div class="dual-upload-grid">
+                        <!-- Chicken Image Upload -->
+                        <div class="upload-card" id="chickenUploadCard">
+                            <div class="upload-header">
+                                <i class="fas fa-dove"></i>
+                                <h3>صورة الدجاجة</h3>
+                            </div>
+                            <input type="file" id="chickenFileInput" accept="image/*" class="file-input">
+                            
+                            <div class="upload-area" id="chickenUploadArea">
+                                <div class="upload-icon">
+                                    <i class="fas fa-camera"></i>
+                                </div>
+                                <h4 class="upload-title">صورة الدجاجة</h4>
+                                <p class="upload-subtitle">اسحب أو انقر لرفع صورة واضحة للدجاجة</p>
+                                <button type="button" class="btn btn-outline chicken-select-btn">
+                                    <i class="fas fa-image"></i>
+                                    اختر صورة
+                                </button>
+                            </div>
+
+                            <div class="preview-area" id="chickenPreviewArea" style="display: none;">
+                                <img id="chickenPreviewImage" alt="معاينة صورة الدجاجة">
+                                <p class="preview-text">انقر لتغيير الصورة</p>
+                            </div>
+                        </div>
+
+                        <!-- Feces Image Upload -->
+                        <div class="upload-card" id="fecesUploadCard">
+                            <div class="upload-header">
+                                <i class="fas fa-vial"></i>
+                                <h3>صورة البراز</h3>
+                            </div>
+                            <input type="file" id="fecesFileInput" accept="image/*" class="file-input">
+                            
+                            <div class="upload-area" id="fecesUploadArea">
+                                <div class="upload-icon">
+                                    <i class="fas fa-vial"></i>
+                                </div>
+                                <h4 class="upload-title">صورة البراز</h4>
+                                <p class="upload-subtitle">اسحب أو انقر لرفع صورة واضحة للبراز</p>
+                                <button type="button" class="btn btn-outline feces-select-btn">
+                                    <i class="fas fa-image"></i>
+                                    اختر صورة
+                                </button>
+                            </div>
+
+                            <div class="preview-area" id="fecesPreviewArea" style="display: none;">
+                                <img id="fecesPreviewImage" alt="معاينة صورة البراز">
+                                <p class="preview-text">انقر لتغيير الصورة</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons" id="actionButtons">
+                        <button class="btn btn-primary" id="analyzeBtn">
+                            <span id="analyzeText">ابدأ التشخيص الشامل</span>
+                            <span id="loadingSpinner" class="spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                جاري التحليل الشامل...
+                            </span>
+                        </button>
+                        <button class="btn btn-outline" id="cancelBtn">إلغاء الكل</button>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section" id="resultsSection" style="display: none;">
+                    <div class="results-header">
+                        <div class="section-title">
+                            <h2>الخطوة 2: نتائج التشخيص الشامل</h2>
+                            <p>تم تحليل الصور بنجاح وإليك التقرير الكامل</p>
+                        </div>
+                        
+                        <div class="results-actions">
+                            <button class="btn btn-outline" id="toggleLanguageBtn">
+                                <i class="fas fa-language"></i>
+                                English
+                            </button>
+                            <button class="btn btn-outline" id="printReportBtn">
+                                <i class="fas fa-print"></i>
+                                طباعة
+                            </button>
+                            <button class="btn btn-primary" id="exportPdfBtn">
+                                <i class="fas fa-download"></i>
+                                تصدير PDF
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Confidence Indicator -->
+                    <div class="confidence-indicator">
+                        <div class="confidence-header">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>مؤشر الثقة العام</h3>
+                            <span class="confidence-value" id="overallConfidence">85%</span>
+                        </div>
+                        <div class="confidence-bar">
+                            <div class="confidence-fill" id="overallConfidenceBar" style="width: 85%;"></div>
+                        </div>
+                    
+                    </div>
+
+                    <!-- Results Cards -->
+                    <div class="comprehensive-results" id="comprehensiveResults">
+                        <!-- Cards will be generated by JavaScript -->
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="newAnalysisBtn">
+                            <i class="fas fa-redo"></i>
+                            تحليل جديد
+                        </button>
+                        <button class="btn btn-outline" id="explainReasoningBtn">
+                            <i class="fas fa-question-circle"></i>
+                            شرح المنطق التشخيصي
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Info Section -->
+                <section class="info-section" id="infoSection">
+                    <h3 class="info-title">
+                        <i class="fas fa-lightbulb"></i>
+                        لماذا التشخيص الشامل؟
+                    </h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>تحليل مزدوج يجمع بين علامات الدجاجة والبراز</span>
+                        </li>
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>دقة أعلى في التشخيص باستخدام خوارزميات متقدمة</span>
+                        </li>
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>خطة علاج شاملة بناءً على تحليل متكامل</span>
+                        </li>
+                        <li>
+                            <span class="bullet">•</span>
+                            <span>تقرير مفصل قابل للطباعة والتشارك مع المختصين</span>
+                        </li>
+                    </ul>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 نظام تشخيص صحة الدجاج - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Reasoning Modal -->
+    <div class="modal" id="reasoningModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>
+                    <i class="fas fa-brain"></i>
+                    المنطق التشخيصي
+                </h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body" id="reasoningContent">
+                <!-- Reasoning content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../@comprehensive/disease-algorithm.js"></script>
+    <script src="../@comprehensive/pdf-generator.js"></script>
+    <script src="../@comprehensive/comprehensive-diagnosis.js"></script>
+
+    <script>
+        // Initialize counters and header functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header functionality
+            const header = document.getElementById('mainHeader');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Scroll effect for header
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Mobile menu toggle
+            mobileMenuToggle?.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    
+                    // Update active link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Animated Counter for Stats
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start);
+                    }
+                }, 16);
+            }
+            
+            // Initialize counters
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                animateCounter(stat, target);
+            });
+        });
+    </script>
+</body>
+</html>
