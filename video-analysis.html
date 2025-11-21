@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحليل الدجاج بالفيديو - نظام تشخيص صحة الدجاج</title>
+    <meta name="description" content="تحليل شامل للدجاج عبر الفيديو المباشر - تحليل الحركة، السلوك، المظهر والصحة">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../video app/video-analysis.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="mainHeader">
+        <div class="header-fixed-text">قد يقال</div>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-video"></i>
+                    <span>تحليل الفيديو</span>
+                </div>
+
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="فتح القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <nav id="mainNav" class="main-nav">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                        <li><a href="#record" class="nav-link active">التصوير</a></li>
+                        <li><a href="#results" class="nav-link">النتائج</a></li>
+                    </ul>
+                </nav>
+
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="window.location.href='index.html'">
+                        <i class="fas fa-home"></i>
+                        <span>الرئيسية</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title animate-fade-in">
+                    تحليل الدجاج
+                    <span class="gradient-text">بالتصوير المباشر</span>
+                </h1>
+                <p class="hero-description animate-fade-in-delay-1">
+                    نظام متكامل لتحليل صحة الدجاج عبر الفيديو المباشر - تحليل الحركة، السلوك، المظهر والمشاكل الصحية في الوقت الحقيقي
+                </p>
+                
+                <!-- Hero Stats -->
+                <div class="hero-stats animate-fade-in-delay-2">
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="4">0</div>
+                        <div class="stat-label">مجالات تحليل</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="60">0</div>
+                        <div class="stat-label">ثانية تحليل</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-count="12">0</div>
+                        <div class="stat-label">مؤشر أداء</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Animated Background -->
+        <div class="hero-bg-animation">
+            <div class="floating-icon" style="left: 10%; top: 20%; animation-delay: 0s;">
+                <i class="fas fa-walking"></i>
+            </div>
+            <div class="floating-icon" style="left: 80%; top: 30%; animation-delay: 1s;">
+                <i class="fas fa-running"></i>
+            </div>
+            <div class="floating-icon" style="left: 20%; top: 70%; animation-delay: 2s;">
+                <i class="fas fa-feather"></i>
+            </div>
+            <div class="floating-icon" style="left: 75%; top: 75%; animation-delay: 1.5s;">
+                <i class="fas fa-chart-line"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content" id="record">
+        <div class="container">
+            <div class="content-wrapper">
+                
+                <!-- Recording Section -->
+                <section class="recording-section" id="recordingSection">
+                    <div class="section-title">
+                        <h2>الخطوة 1: التصوير والتحليل</h2>
+                        <p>قم بتصوير الدجاجة لمدة 1-2 دقيقة للحصول على أفضل نتائج التحليل</p>
+                    </div>
+                    
+                    <div class="video-container">
+                        <!-- Video Preview -->
+                        <div class="video-preview" id="videoPreview">
+                            <video id="previewVideo" autoplay muted playsinline></video>
+                            <div class="video-overlay" id="videoOverlay">
+                                <div class="overlay-content">
+                                    <i class="fas fa-video"></i>
+                                    <h3>جاهز للتصوير</h3>
+                                    <p>انقر على زر البدء لفتح الكاميرا والبدء في التحليل</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recording Controls -->
+                        <div class="recording-controls">
+                            <div class="camera-controls">
+                                <button class="btn btn-outline" id="switchCameraBtn">
+                                    <i class="fas fa-sync-alt"></i>
+                                    تبديل الكاميرا
+                                </button>
+                                <button class="btn btn-outline" id="toggleFlashBtn">
+                                    <i class="fas fa-bolt"></i>
+                                    فلاش
+                                </button>
+                            </div>
+
+                            <div class="main-controls">
+                                <button class="btn btn-primary btn-large" id="startRecordingBtn">
+                                    <i class="fas fa-record-vinyl"></i>
+                                    بدء التصوير والتحليل
+                                </button>
+                                <button class="btn btn-danger btn-large" id="stopRecordingBtn" style="display: none;">
+                                    <i class="fas fa-stop"></i>
+                                    إيقاف التصوير
+                                </button>
+                            </div>
+
+                            <!-- Recording Timer -->
+                            <div class="recording-timer" id="recordingTimer" style="display: none;">
+                                <i class="fas fa-circle"></i>
+                                <span id="timerDisplay">00:00</span>
+                                <span class="recording-text">جاري التسجيل والتحليل...</span>
+                            </div>
+                        </div>
+
+                        <!-- Analysis Progress -->
+                        <div class="analysis-progress" id="analysisProgress" style="display: none;">
+                            <div class="progress-header">
+                                <i class="fas fa-chart-bar"></i>
+                                <h4>جاري التحليل في الوقت الحقيقي</h4>
+                            </div>
+                            <div class="progress-bars">
+                                <div class="progress-item">
+                                    <span class="progress-label">المظهر والريش</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="appearanceProgress" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-value">0%</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">الحركة والمشي</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="motionProgress" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-value">0%</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">السلوك والنشاط</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="behaviorProgress" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-value">0%</span>
+                                </div>
+                                <div class="progress-item">
+                                    <span class="progress-label">الصحة العامة</span>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" id="healthProgress" style="width: 0%"></div>
+                                    </div>
+                                    <span class="progress-value">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Live Analysis Indicators -->
+                    <div class="live-indicators" id="liveIndicators" style="display: none;">
+                        <h4 class="indicators-title">
+                            <i class="fas fa-heartbeat"></i>
+                            المؤشرات الحية
+                        </h4>
+                        <div class="indicators-grid">
+                            <div class="indicator-item">
+                                <div class="indicator-icon">
+                                    <i class="fas fa-walking"></i>
+                                </div>
+                                <span class="indicator-label">نشاط الحركة</span>
+                                <div class="indicator-value" id="movementActivity">--</div>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-icon">
+                                    <i class="fas fa-feather"></i>
+                                </div>
+                                <span class="indicator-label">حالة الريش</span>
+                                <div class="indicator-value" id="featherCondition">--</div>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-icon">
+                                    <i class="fas fa-balance-scale"></i>
+                                </div>
+                                <span class="indicator-label">التوازن</span>
+                                <div class="indicator-value" id="balanceStatus">--</div>
+                            </div>
+                            <div class="indicator-item">
+                                <div class="indicator-icon">
+                                    <i class="fas fa-running"></i>
+                                </div>
+                                <span class="indicator-label">النشاط العام</span>
+                                <div class="indicator-value" id="overallActivity">--</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Instructions -->
+                    <div class="instructions-section">
+                        <h4 class="instructions-title">
+                            <i class="fas fa-lightbulb"></i>
+                            نصائح للتصوير المثالي
+                        </h4>
+                        <ul class="instructions-list">
+                            <li>
+                                <span class="bullet">•</span>
+                                <span>التقط الفيديو في إضاءة جيدة وواضحة</span>
+                            </li>
+                            <li>
+                                <span class="bullet">•</span>
+                                <span>اجعل الدجاجة في مكان مفتوح يسمح بالحركة</span>
+                            </li>
+                            <li>
+                                <span class="bullet">•</span>
+                                <span>حاول تصوير الدجاجة من زوايا متعددة</span>
+                            </li>
+                            <li>
+                                <span class="bullet">•</span>
+                                <span>المدة المثالية من 1 إلى 2 دقيقة</span>
+                            </li>
+                            <li>
+                                <span class="bullet">•</span>
+                                <span>تأكد من ظهور الجسم بالكامل في الفيديو</span>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Results Section -->
+                <section class="results-section" id="resultsSection" style="display: none;">
+                    <div class="section-title">
+                        <h2>الخطوة 2: نتائج التحليل الشامل</h2>
+                        <p>تم تحليل الفيديو بنجاح وإليك التقرير التفصيلي</p>
+                    </div>
+
+                    <!-- Overall Score -->
+                    <div class="overall-score-card">
+                        <div class="score-header">
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>التقييم العام</h3>
+                            <div class="total-score" id="totalScore">85%</div>
+                        </div>
+                        <div class="score-breakdown">
+                            <div class="score-item">
+                                <span class="score-label">المظهر والريش</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" id="appearanceScore" style="width: 0%"></div>
+                                </div>
+                                <span class="score-value" id="appearanceValue">0%</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="score-label">الحركة والمشي</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" id="motionScore" style="width: 0%"></div>
+                                </div>
+                                <span class="score-value" id="motionValue">0%</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="score-label">السلوك والنشاط</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" id="behaviorScore" style="width: 0%"></div>
+                                </div>
+                                <span class="score-value" id="behaviorValue">0%</span>
+                            </div>
+                            <div class="score-item">
+                                <span class="score-label">الصحة العامة</span>
+                                <div class="score-bar">
+                                    <div class="score-fill" id="healthScore" style="width: 0%"></div>
+                                </div>
+                                <span class="score-value" id="healthValue">0%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Analysis Cards -->
+                    <div class="detailed-analysis" id="detailedAnalysis">
+                        <!-- Cards will be generated by JavaScript -->
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="newAnalysisBtn">
+                            <i class="fas fa-redo"></i>
+                            تحليل جديد
+                        </button>
+                        <button class="btn btn-outline" id="downloadReportBtn">
+                            <i class="fas fa-download"></i>
+                            تحميل التقرير
+                        </button>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2025 نظام تشخيص صحة الدجاج - جميع الحقوق محفوظة</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toastMessage"></span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../video app/video-processor.js"></script>
+    <script src="../video app/motion-analysis.js"></script>
+    <script src="../video app/behavior-analysis.js"></script>
+    <script src="../video app/video-analysis.js"></script>
+
+    <script>
+        // Initialize counters and header functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Header functionality
+            const header = document.getElementById('mainHeader');
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            // Scroll effect for header
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Mobile menu toggle
+            mobileMenuToggle?.addEventListener('click', function() {
+                this.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenuToggle.classList.remove('active');
+                    mainNav.classList.remove('active');
+                    
+                    // Update active link
+                    navLinks.forEach(navLink => navLink.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Animated Counter for Stats
+            function animateCounter(element, target, duration = 2000) {
+                let start = 0;
+                const increment = target / (duration / 16);
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = Math.floor(start);
+                    }
+                }, 16);
+            }
+            
+            // Initialize counters
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                animateCounter(stat, target);
+            });
+        });
+    </script>
+</body>
+</html>
